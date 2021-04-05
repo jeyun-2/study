@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex04</title>
+</head>
+<body>
+    <div id="app">
+        <h1>dataPropertyIsReactive ="{{dataPropertyIsReactive}}"</h1>
+        <button onclick="changeData();">변해라!</button>
+    </div>
+
+    <div id="app2">
+         <h1>{{ computedProperty}}</h1>
+         <h1>{{ computedProperty}}</h1>
+         <h1>{{ computedProperty}}</h1>
+         <button onclick="changeData2();">변해라아아</button>
+    </div>    
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: '#app',
+            data: {dataPropertyIsReactive : "dummy"}
+        });
+        function changeData(){
+            const now = new Date();
+            app.dataPropertyIsReactive = now.toLocaleString();//시간 받아오기
+        }
+    </script>
+    <script>
+        const app2 = new Vue({
+            el : '#app2',
+            computed:{
+                computedProperty(){
+                    console.log("recompute?!");
+                    return new Date();
+                }
+            }
+        });
+        function changeData2(){
+            app.computedProperty = new Date();
+        }
+    </script>
+</body>
+</html>

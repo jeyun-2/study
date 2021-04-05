@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex01</title>
+</head>
+<body>
+   <div id="app">
+       <h1>Hello {{ str }} world!</h1>
+   </div>
+
+   <div id="app2">
+       <h1>처음 해보는 Vue.js</h1>
+       <h2>{{message}}</h2>
+       <h2 style="color:red">{{num}}</h2>
+   </div>
+
+   <div id="app3">
+
+   </div>
+   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+   <script>
+       var app = new Vue({
+           el:'#app',
+           data:{
+               str: 'Vue.js'
+           }
+       });
+    /*  var datas = {
+          str : 'Vue.js'
+      };
+      var vueConfigOptions = {
+          el : '#app',
+          data : data
+      };
+      var app = new Vue(vueConfigOptions);
+   */
+   </script>
+   <script>
+       var app = new Vue({
+           el:'#app2',
+           data:{
+               message : 'Hi Vue?',
+               num : 100
+           }
+       })
+   </script>
+   <script>
+        var div= document.querySelector('#app3')
+        var vm2={
+            message: "vm2 message"
+        }    
+
+         //Object.defineProperty()...메소드는 객체에 새로운 속성을 정의하거나
+        // 이미 존재하는 속성을 수정한 후 그 객체를 반환한다.
+        Object.defineProperties(vm2,{
+            nessage:{
+                set:function(val){
+                    this._message=val;
+                    render(val)
+                },
+                get:function(){
+                    return this._message
+                }
+            }
+        })
+   </script>
+  
+</body>
+</html>
