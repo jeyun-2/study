@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex08</title>
+</head>
+<body>
+    <div id="app">
+      <h1>{{ value}}</h1>
+       <!--수식어는 여러개 함께 사용 가능
+       @keyUp.shift.enter.exact
+       exact를 사용하면 shift + enter 만 눌러야 이벤트 동작 함
+       -->
+      <input id="INPUT" type="text" @keyUp.shift.enter.exact=' setValue()'/> 
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: { value: "value" },
+            methods: {
+                setValue : function(){
+                    this.value = document.getElementById("INPUT").value;
+                }
+            }
+        });
+    </script>
+</body>
+</html>

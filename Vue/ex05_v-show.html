@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex05</title>
+</head>
+      <!-- v-show와 v-if는 동작은 비슷하다.
+            true면 렌더링하고 false인경우는 렌더링하지 않음
+            v-if의 경우 false이면 DOM에서 해당 요소를 삭제 처리함
+            v-show의 경우 false이면 display:none으로 속성만 토글한다.
+
+            조건이 많이 자주 변할경우 v-show을 하는 것이 좋다.
+
+            ----------------------------------------------------------------
+            v-if                                    v-show
+            ----------------------------------------------------------------
+            조건이 false인 경우 엘리먼트 삭제됨      항상 렌더링 됨. display속성을 토글함
+            template구문 지원함                     template구문 지원 안함
+            v-else사용가능                          v-else사용 불가
+            -----------------------------------------------------------------
+        -->
+<body>
+    <div id="app">
+        <div v-show='isLoginBoxshow'>
+        <p>비로그인 상태 화면</p>
+        <button onclick="login();">로그인!</button> 
+        </div>
+        <div v-show='!isLoginBoxshow'>
+        <p>로그인 상태 화면</p>
+        <button onclick="logout();">로그아웃!</button>
+        </div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el:'#app',
+            data:{ isLoginBoxshow:true}
+        });
+        function login(){
+            app.isLoginBoxshow = false;
+        };
+        function logout(){
+            app.isLoginBoxshow = true;
+        };
+    </script>
+</body>
+</html>

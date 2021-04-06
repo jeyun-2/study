@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex09</title>
+</head>
+<body>
+    <div id="app">
+      <li><a v-bind:href=' url '>{{ url }}</a></li>
+      <li><a :href=' getUrl("google") '>google</a></li>
+    </div>
+    <ul id="app2">
+        <!--마지막에 지정한것 적용
+            바인드, 일반속성 동일 레벨
+        -->
+      <li><a :href=' url ' href="http://google.com">과연 우선 순위는</a></li>
+      <li><a href="http://google.com" :href=' url '>어느 것이 높을까?</a></li>
+    </ul>
+    <div id="app3">
+       <p :style=' redFont ' style="font-size: 3em;">스타일 바인딩</p>
+       <p :class=' bomb ' class="love">클래스 바인딩</p>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: { url: "https://start-vue.js-web.app"},
+            methods: {
+                getUrl : function(name) {
+                    return "http://"+ name + ".com";
+                }
+            }
+        });
+    </script>
+    <script>
+        const app2 = new Vue({
+            el: "#app2",
+            data: { url: "http://naver.com"}
+        });
+    </script>
+    <script>
+        const app3 = new Vue({
+            el: "#app3",
+            data: { redFont: "color: red;" }
+        });
+    </script>
+</body>
+</html>
