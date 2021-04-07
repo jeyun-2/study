@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex16</title>
+</head>
+<body>
+    <ul id="app">
+        <li v-for=' (no, i) in arr '>{{ no }}</li>
+        <li><button @click=' append() '>+1</button></li>
+    </ul>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+            el: "#app",
+            data: {
+                arr:[1,2,3],
+                cur: 3
+            },
+            methods:{
+                append: function(){
+                   this.cur++;
+                   this.arr.push( this.cur);
+                }
+            }
+        })
+    </script>
+</body>
+</html>

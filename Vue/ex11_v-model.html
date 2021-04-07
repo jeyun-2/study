@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex11</title>
+</head>
+<body>
+    <div id="app">
+      <h1>{{ value }}</h1>
+      <input type="text" v-model=" value">
+      <button @click=' setDefault()'>기본값</button>
+    </div>
+    <div id="app2">
+      <h1>{{ single }}</h1>
+      <!--한개의 체크박스는 true, false 반환 -->
+      <input type="checkbox" v-model=' single' value="단일"> single
+      <h1>{{ multi }}</h1>
+      <!-- 여러개 체크박스를 배열로 넣으면 선택한 순서대로 각 체크박스의 value 속성값을 문자열배열로
+           데이터에 반환-->
+      <input type="checkbox" v-model=' multi ' value="one"> 1
+      <input type="checkbox" v-model=' multi ' value="two"> 2
+      <input type="checkbox" v-model=' multi ' value="three"> 3 
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+           el: "#app",
+           data: { value: "default"},
+           methods: {
+               setDefault: function(){
+                this.value = "default";
+               }
+           }
+        });
+        const app2 = new Vue({
+            el: "#app2",
+            data: {
+                single: true,
+                multi: []
+            }
+        });
+    </script>
+</body>
+</html>

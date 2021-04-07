@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>v- for</title>
+</head>
+<body>
+    <div id="app">
+       <p><span v-for=' item in arr '>{{ item }} </span></p>
+       <p><span v-for=' item in obj '>{{ item }} </span></p>
+    </div>
+
+    <div id="app2">
+       <p v-for=' (item, index) in arr '>{{ index }} => {{ item }}</p>
+       <br>
+       <p v-for=' (item, key) in obj '>{{ key }} => {{ item }}</p>
+       <br>
+       <p v-for=' (item, key, index) in obj '>{{ index }} => {{ key }} : {{ item }}</p>
+    </div> 
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script>
+        const app = new Vue({
+           el: "#app",
+           data: { 
+              arr: ["A","B","C","D","E"],
+              obj: {
+                 one: 1,
+                 two: 2,
+                 three: 3
+             }
+           }
+        });
+
+        const app2 = new Vue({
+            el: "#app2",
+            data: {
+                arr: ["A","B","C","D","E"],
+                obj: { one: 1, two: 2, three: 3}//객체를 배열로 변환하여 사용하자
+            }
+        });
+    </script>    
+</body>
+</html>
